@@ -19,3 +19,13 @@ Simple and fast cloud native network agent
 </p>
 
 Using golang to develop lightweight network agent based on nginx
+
+### Features
+* Our upper layer uses golang for development
+* The bottom layer depends on nginx core
+* Support TCP, websocket, grpc and HTTP protocol proxy
+* Supports frontend and backend normal agents
+* Support kubernetes label mode to configure agent
+* Supports etcd kV configuration mode and is compatible with tracefik V1 etcd
+* Support current limiting, fusing and simple statistics
+* More features please look forward to :)
