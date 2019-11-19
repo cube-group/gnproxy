@@ -5,7 +5,7 @@ Simple and fast cloud native network agent
   <img alt="gnproxy" height=100 width=150 src="img/gnproxy.png">
 </p>
 
-<p align="center">
+<p>
   <a href="https://search.maven.org/artifact/com.easymybatis.freamwork/spring-easymybatis-core">
     <img alt="maven" src="https://img.shields.io/badge/golang-1.11-blue">
   </a>
