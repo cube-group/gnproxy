@@ -2,7 +2,7 @@
 Simple and fast cloud native network agent
 
 <p>
-  <img alt="gnproxy" height=150 width=100 src="img/gnproxy.png">
+  <img alt="gnproxy" height=100 width=150 src="img/gnproxy.png">
 </p>
 
 <p align="center">
