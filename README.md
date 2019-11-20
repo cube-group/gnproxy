@@ -26,6 +26,6 @@ Using golang to develop lightweight network agent based on nginx
 * Support TCP, websocket, grpc and HTTP protocol proxy
 * Supports frontend and backend normal agents
 * Support kubernetes label mode to configure agent
-* Supports etcd kV configuration mode and is compatible with tracefik V1 etcd
+* Supports etcd kV configuration mode and is compatible with <a href='https://github.com/containous/traefik' target='_blank'>traefik</a> V1 etcd
 * Support current limiting, fusing and simple statistics
 * More features please look forward to :)
