@@ -1,35 +1,51 @@
-package app
+package core
 
 import (
 	"bufio"
 	"fmt"
 	"io"
-	"os"
 	"os/exec"
 )
 
 type StdHandler func(row string)
 
+//执行nginx
 func Exec(handler StdHandler) {
-	cmd := exec.Command("nginx", "-g", "'daemon off;'")
+	cmd := exec.Command("nginx")
+
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "error=>", err.Error())
-		return
+		panic("StdoutPipe Err " + err.Error())
 	}
-	cmd.Start() // Start开始执行c包含的命令，但并不会等待该命令完成即返回。Wait方法会返回命令的返回状态码并在命令返回后释放相关的资源。
+	if err := cmd.Start(); err != nil {
+		panic("nginx Start Err " + err.Error())
+	}
 
+	fmt.Println("pid:", cmd.Process.Pid)
 	reader := bufio.NewReader(stdout)
 
 	//实时循环读取输出流中的一行内容
 	for {
 		line, err2 := reader.ReadString('\n')
 		if err2 != nil || io.EOF == err2 {
+			fmt.Println("ReadString Err " + err2.Error())
 			break
 		}
 		handler(line)
 	}
 
-	cmd.Wait()
+	if err := cmd.Wait(); err != nil {
+		fmt.Println("Wait Err " + err.Error())
+	}
+	fmt.Println("nginx over shit")
+}
 
+//nginx reload
+func Reload() error {
+	return exec.Command("nginx", "-s", "reload").Run()
+}
+
+//nginx test config
+func Test() error {
+	return exec.Command("nginx", "-t").Run()
 }
